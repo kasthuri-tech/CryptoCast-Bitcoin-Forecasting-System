@@ -19,6 +19,10 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# ---------------- MAIN TITLE ----------------
+st.title("🪙 CryptoCast: Bitcoin Forecasting Dashboard")
+st.markdown("---")
+
 # ---------------- DATA LOADING ----------------
 @st.cache_data
 def get_cached_data():
@@ -160,7 +164,19 @@ with tab_technical:
     """)
         
     st.markdown("#### 🗃️ Live Snapshot of Cleaned Database Records")
-    st.dataframe(dataframe[['Date', 'Price_Clean', 'SMA_7', 'SMA_60', 'Target_1D']].tail(15), use_container_width=True)
+    audit_columns = [
+        'Price_Clean', 'Open_Clean', 'High_Clean', 'Low_Clean', 
+        'Volume_Clean', 'Change_Percentage_Clean', 'SMA_7', 'SMA_60', 'Target_1D'
+    ]
+    # Create a clean display copy with a Serial Number and shorter names
+    display_df = dataframe[['Date'] + audit_columns].tail(15).copy()
+    display_df.columns = ['Date', 'Price', 'Open', 'High', 'Low', 'Volume', 'Daily %', 'SMA 7', 'SMA 60', 'Target 1D']
+    display_df.insert(0, 'S.NO', range(1, len(display_df) + 1))
+    
+    # Fill None values with a professional label
+    display_df = display_df.fillna("Awaiting Data...")
+    
+    st.dataframe(display_df, use_container_width=True, hide_index=True)
 
     st.write("---")
     st.markdown("<div style='text-align: center; font-size: 0.85em; opacity: 0.6;'>CryptoCast Final Project Implementation • Streamlit Optimized</div>", unsafe_allow_html=True)
