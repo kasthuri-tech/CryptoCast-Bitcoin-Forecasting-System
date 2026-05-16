@@ -21,6 +21,7 @@ st.markdown("""
 
 # ---------------- MAIN TITLE ----------------
 st.title("🪙 CryptoCast: Bitcoin Forecasting Dashboard")
+st.balloons()
 st.markdown("---")
 
 # ---------------- DATA LOADING ----------------
