@@ -1,5 +1,7 @@
 # CryptoCast: Multi-Horizon Bitcoin Price Forecasting System
 
+📌 Note: Built during my data science program using a practice dataset. The end-to-end implementation, modeling, and application were independently developed.
+
 ## 🎯 Project Objective
 The primary objective of this project is to build a professional-grade **Bitcoin Forecasting Dashboard** that helps users visualize future price movements over three distinct time horizons (1-Day, 3-Days, and 7-Days). By analyzing 60 days of historical momentum and technical features, the system provides data-driven insights into potential market volatility using machine learning.
 
